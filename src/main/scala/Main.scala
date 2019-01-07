@@ -1,3 +1,4 @@
 object Main extends App{
- print("HEYYYYY")
+ val session = new Textadventure
+ session.happy()
 }
