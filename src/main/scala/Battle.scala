@@ -94,7 +94,7 @@ class Battle{
       val r = scala.util.Random
       val damage = r.nextInt(20)
       val castTime = r.nextInt(10)
-      println(s"\nYou choose Aqua Slap\nAqual Slap damage:$damage\nAqua Slap cast time:$castTime")
+      println(s"\nYou choose Aqua Slap\nAqua Slap damage:$damage\nAqua Slap cast time:$castTime")
       if (castTime < 8){
         println(s"\nSpell is still charging\nMiss Turn\nEnemy attacks${Player.attacks}")
         Player.health = Player.health - Enemy.attacks
