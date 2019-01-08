@@ -12,5 +12,5 @@ object Main extends App{
 
  val exercise = new Exercise
  //exercise.FirstSolution()
- exercise.SecondSolution(99)
+ exercise.DupArray()
 }

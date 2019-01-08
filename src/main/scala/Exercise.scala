@@ -19,7 +19,11 @@ class Exercise {
   def DupArray(){
     val dupArray = Array.range(1,1000000)
     dupArray(14212) = 123412
-
-    println(dupArray.length)
+    val place = dupArray(14212)
+    for(i <- place until dupArray.length){
+      if(dupArray(i) == dupArray(place)){
+          println(s"location $place location ${dupArray.indexOf(i)}")
+      }
+    }
   }
 }
