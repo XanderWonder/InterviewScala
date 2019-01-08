@@ -1,8 +1,8 @@
 import scala.io.StdIn.readInt
 
 object Main extends App{
-// val session = new Story
- //session.start()
+ val session = new Story
+ session.playerChoice()
 
  //val games = new CardGames
  //games.blackjack(readInt,readInt)
@@ -10,7 +10,7 @@ object Main extends App{
  //val collect = new Collection
  //collect.ExFlatMap()
 
- val exercise = new Exercise
- //exercise.FirstSolution()
- exercise.SecondSolution(99)
+// val exercise = new Exercise
+// //exercise.FirstSolution()
+// exercise.SecondSolution(99)
 }

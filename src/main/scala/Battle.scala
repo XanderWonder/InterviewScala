@@ -23,29 +23,31 @@ class Battle{
   }
   def playerPhase(): Unit ={
     if(Player.hit > Enemy.hit){
-      println("Player attack lands")
-      Enemy.enHealth = Enemy.health - Player.attacks
-      Enemy.health = Enemy.enHealth
-      println(s"Enemy health:${Enemy.enHealth}")
-    }else{println("attack misses")
+      enemyLifecheck()
+    }
+    else{println("attack misses")
+      Player.Reroll()
+      Enemy.Reroll()
       playerChoice()}
   }
   def enemyPhase(): Unit ={
     println(s"\nEnemy attacks strength${Enemy.attacks}\nHit ratio${Enemy.hit}")
     if(Enemy.hit > Player.hit){
-      println("Enemy lands hit")
-      println(s"health:${Player.health}")
+      playerArmourcheck()
       if(Player.health <= 0){println("\nYOU LOSE")}
     }else{println("Enemy misses")
     playerChoice()}
   }
   def playerArmourcheck(): Unit ={
+    println("Enemy lands hit")
+    println(s"health:${Player.health}")
     val dmg = Player.armour + Player.bonusArmour - Enemy.attacks
     if(dmg > 0){
       println(s"You took $dmg damage ")
       Player.health - dmg
-    }else{println("You took no damage")}
-
+      playerLifecheck()
+    }else{println("You took no damage")
+    playerChoice()}
   }
   def playerLifecheck(): Unit ={
     val halfDmg = Player.health - (Enemy.attacks / 2)
@@ -62,6 +64,10 @@ class Battle{
     }else{println("\nYOU RUN AWAY")}
   }
   def enemyLifecheck(): Unit ={
+    println("Player attack lands")
+    Enemy.enHealth = Enemy.health - Player.attacks
+    Enemy.health = Enemy.enHealth
+    println(s"Enemy health:${Enemy.enHealth}")
     if(Enemy.health <= 0 || Enemy.enHealth <= 0){println("\nYOU WIN")}
     else playerChoice()
   }
