@@ -6,5 +6,4 @@ object Main extends App{
 
  val games = new CardGames
  games.blackjack(readInt,readInt)
-
 }
