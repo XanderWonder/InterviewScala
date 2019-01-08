@@ -3,11 +3,13 @@ import scala.io.StdIn.{readLine,readInt}
 
 class Battle{
   val random: Random.type = scala.util.Random
-  def action(){
+  def playerChoice(): Unit ={
     println(s"Player health:${Player.health}\nPlayer attacks strength:${Player.attacks}\nEnemy health:${Enemy.health}\nEnemy strength:${Enemy.attacks}")
     println("\nAction menu\n1. Attack\n2. Defend\n3. Spells \n4.Run away")
-    val choice = readInt
-    choice match {
+    this.action()
+  }
+  def action(){
+    readInt match {
       case 1 => this.attack()
       case 2 => this.defend()
       case 3 => this.spells()
@@ -17,40 +19,51 @@ class Battle{
   }
   def attack(){
     println(s"\nYour initiative${Player.initiative}\nEnemy initiative${Enemy.initiative}")
-    if(Player.initiative > Enemy.initiative){
-      println(s"\nPlayer attacks strength:${Player.attacks}\nHit ratio:${Player.hit}")
-      println(s"\nEnemy attack strength:${Enemy.attacks}\nHit ratio:${Enemy.hit}")
-      if(Player.hit > Enemy.hit){
-        println("Player attack lands")
-        Enemy.enHealth = Enemy.health - Player.attacks
-        Enemy.health = Enemy.enHealth
-        println(s"Enemy health:${Enemy.enHealth}")
-        if(Enemy.health <= 0 || Enemy.enHealth <= 0){println("\nYOU WIN")}
-      }else{println("attack misses")}
-    }else{
-      println(s"\nEnemy attacks strength${Enemy.attacks}\nHit ratio${Enemy.hit}")
-      if(Enemy.hit > Player.hit){
-        println("Enemy lands hit")
-        val dmg = Player.armour + Player.bonusArmour - Enemy.attacks
-        if(dmg > 0){
-          println(s"You took $dmg damage ")
-          Player.health - dmg
-        }else{println("You took no damage")}
-        println(s"health:${Player.health}")
-        if(Player.health <= 0){println("\nYOU LOSE")}
-      }else{println("Enemy misses")}
-    }
+    if(Player.initiative > Enemy.initiative){playerPhase()}else{enemyPhase()}
+  }
+  def playerPhase(): Unit ={
+    if(Player.hit > Enemy.hit){
+      println("Player attack lands")
+      Enemy.enHealth = Enemy.health - Player.attacks
+      Enemy.health = Enemy.enHealth
+      println(s"Enemy health:${Enemy.enHealth}")
+    }else{println("attack misses")
+      playerChoice()}
+  }
+  def enemyPhase(): Unit ={
+    println(s"\nEnemy attacks strength${Enemy.attacks}\nHit ratio${Enemy.hit}")
+    if(Enemy.hit > Player.hit){
+      println("Enemy lands hit")
+      println(s"health:${Player.health}")
+      if(Player.health <= 0){println("\nYOU LOSE")}
+    }else{println("Enemy misses")
+    playerChoice()}
+  }
+  def playerArmourcheck(): Unit ={
+    val dmg = Player.armour + Player.bonusArmour - Enemy.attacks
+    if(dmg > 0){
+      println(s"You took $dmg damage ")
+      Player.health - dmg
+    }else{println("You took no damage")}
+
+  }
+  def playerLifecheck(): Unit ={
+    val halfDmg = Player.health - (Enemy.attacks / 2)
+    Player.health - halfDmg
     if(Player.health <= 0){
       println("DEAD")
-    }else{
-      println("\nContinue fighting (yes or no)")
-      val choice = readLine
-      if(choice == "y"|| choice == "Y" || choice == "yes" || choice == "Yes" || choice == "YES"){
-        Player.Reroll()
-        Enemy.Reroll()
-        this.action()
-      }else{println("\nYOU RUN AWAY")}
-    }
+    }else{playerChoice()}
+    println("\nContinue fighting (yes or no)")
+    val choice = readLine
+    if(choice == "Yes".toLowerCase()){
+      Player.Reroll()
+      Enemy.Reroll()
+      this.action()
+    }else{println("\nYOU RUN AWAY")}
+  }
+  def enemyLifecheck(): Unit ={
+    if(Enemy.health <= 0 || Enemy.enHealth <= 0){println("\nYOU WIN")}
+    else playerChoice()
   }
   def defend(){
     Player.bonusArmour = random.nextInt(5)
@@ -58,79 +71,18 @@ class Battle{
     this.action()
   }
   def spells(){
-    spellable()
-    def spellable(){
-      println("Choose a spell\n1.Fireball\n2.Aqua Slap\n3.Lighting Bolt")
-      val choice = readInt
-      choice match {
-        case 1 => fireBall()
-        case 2 => aquaSlap()
-        case 3 => lightingBolt()
-        case _ => spellable()
+      println("Time to create a spell")
+    readInt match {
+        case 1 => newSpells()
+        case _ => println("INVALID")
       }
     }
-    def fireBall(){
-      val r = scala.util.Random
-      val damage = r.nextInt(20)
-      val castTime = r.nextInt(10)
-      println(s"\nYou choose Fireball\nFireball damage:$damage\nFireball cast time:$castTime")
-      if (castTime < 8){
-        println(s"\nSpell is still charging\nMiss Turn\nEnemy attacks${Enemy.attacks}")
-        Player.health = Player.health - Enemy.attacks
-        println(s"health:${Player.health}")
-        if(Player.health <= 0){
-          println("\nYOU LOSE")
-        }else{fireBall()}
-      }else{
-        Enemy.enHealth = Enemy.health - damage
-        Enemy.health = Enemy.enHealth
-        println(s"Enemy health:${Enemy.enHealth}")
-        if(Enemy.health <= 0 || Enemy.enHealth <= 0){
-          println("\nYOU WIN")
-        }else{this.action()}
-      }
-    }
-    def aquaSlap(){
-      val r = scala.util.Random
-      val damage = r.nextInt(20)
-      val castTime = r.nextInt(10)
-      println(s"\nYou choose Aqua Slap\nAqua Slap damage:$damage\nAqua Slap cast time:$castTime")
-      if (castTime < 8){
-        println(s"\nSpell is still charging\nMiss Turn\nEnemy attacks${Player.attacks}")
-        Player.health = Player.health - Enemy.attacks
-        println(s"health:${Player.health}")
-        if(Player.health <= 0){
-          println("\nYOU LOSE")
-        }else{aquaSlap()}
-      }else{
-        Enemy.enHealth = Enemy.health - damage
-        Enemy.health = Enemy.enHealth
-        println(s"Enemy health:${Enemy.enHealth}")
-        if(Enemy.health <= 0 || Enemy.enHealth <= 0){
-          println("\nYOU WIN")
-        }else{this.action()}
-      }
-    }
-    def lightingBolt(){
-      val r = scala.util.Random
-      val damage = r.nextInt(20)
-      val castTime = r.nextInt(10)
-      println(s"\nYou choose Lighting Bolt\nLighting Bolt damage:$damage\nLighting Bolt cast time:$castTime")
-      if (castTime < 8){
-        println(s"\nSpell is still charging\nMiss Turn\nEnemy attacks${Enemy.attacks}")
-        Player.health = Player.health - Enemy.attacks
-        println(s"health:${Player.health}")
-        if(Player.health <= 0){
-          println("\nYOU LOSE")
-        }else{lightingBolt()}
-      }else{
-        Enemy.enHealth = Enemy.health - damage
-        Enemy.health = Enemy.enHealth
-        println(s"Enemy health:${Enemy.enHealth}")
-        if(Enemy.health <= 0 || Enemy.enHealth <= 0){
-          println("\nYOU WIN")
-        }else{this.action()}
-      }
-    }
-  }
+  def newSpells(){
+      println("Name your spell")
+      val spellName = readLine()
+      val damage = random.nextInt(20)
+      val concentration = random.nextInt(10)
+      println(s"\nYou have made $spellName\n$spellName damage:$damage\n$spellName cast time:$concentration")
+      if (concentration < 8){}else{}
+   }
 }
