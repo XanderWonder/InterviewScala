@@ -5,16 +5,9 @@ class Exercise {
   }
   def SecondSolution(beerNum:Int){
     println(s"\n$beerNum bottle of JOJO on the wall\n$beerNum bottle of JOJO on the wall")
-    if(beerNum <= 0){
+    if(beerNum == 0){
         println("NO MORE")
-    }else Song(beerNum)
-  }
-  def Song(secondCounter:Int){
-    val newCounter = secondCounter - 1
-    println(s"take one down pass it around $newCounter bottle of JOJO in the wall ")
-    if (newCounter <= 0){
-      println("NO MORE")
-    }else  SecondSolution(newCounter)
+    }else SecondSolution(beerNum - 1)
   }
   def DupArray(){
     val dupArray = Array.range(1,1000000)

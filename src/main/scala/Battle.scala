@@ -2,7 +2,7 @@ import scala.util.Random
 import scala.io.StdIn.{readLine,readInt}
 
 class Battle{
-  val r: Random.type = scala.util.Random
+  val random: Random.type = scala.util.Random
   def action(){
     println(s"Player health:${Player.health}\nPlayer attacks strength:${Player.attacks}\nEnemy health:${Enemy.health}\nEnemy strength:${Enemy.attacks}")
     println("\nAction menu\n1. Attack\n2. Defend\n3. Spells \n4.Run away")
@@ -53,7 +53,7 @@ class Battle{
     }
   }
   def defend(){
-    Player.bonusArmour = r.nextInt(5)
+    Player.bonusArmour = random.nextInt(5)
     println(s"You gained bonus armour:${Player.bonusArmour}")
     this.action()
   }
