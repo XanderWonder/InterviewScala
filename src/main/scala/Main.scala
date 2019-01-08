@@ -1,5 +1,3 @@
-import scala.io.StdIn.readInt
-
 object Main extends App{
  val session = new Story
  session.playerChoice()
