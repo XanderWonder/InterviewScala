@@ -6,4 +6,7 @@ object Main extends App{
 
  val games = new CardGames
  games.blackjack(readInt,readInt)
+
+ val collect = new Collection
+ collect.ExFlatMap()
 }
