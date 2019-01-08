@@ -77,7 +77,7 @@ class Battle{
     this.action()
   }
   def spells(){
-      println("Time to create a spell")
+      println("Time to create a spell\n Enter 1")
     readInt match {
         case 1 => newSpells()
         case _ => println("INVALID")
