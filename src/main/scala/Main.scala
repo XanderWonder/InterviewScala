@@ -1,3 +1,14 @@
 object Main extends App{
- print("HEYYYYY")
+ val session = new Story
+ session.playerChoice()
+
+ //val games = new CardGames
+ //games.blackjack(readInt,readInt)
+
+ //val collect = new Collection
+ //collect.ExFlatMap()
+
+// val exercise = new Exercise
+// //exercise.FirstSolution()
+// exercise.SecondSolution(99)
 }
