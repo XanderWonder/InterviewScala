@@ -12,16 +12,16 @@ class Story extends Battle {
   def cave() {
     println("As you follow the grass path you see near the clearing is a cave\nDo you wish to enter the cave?")
     val choice = readLine
-    if (choice == "Yes".toLowerCase()){
+    if (choice.toLowerCase == "yes"){
       println("\nAs you enter the cave you felt a chill down you spine \nYou have been spotted by an enemy\nDo you wish to fight?")
       var choice = readLine
-      if (choice == "Yes".toLowerCase()) {
+      if (choice.toLowerCase == "yes") {
         println("You decided to fight")
         playerChoice()
       } else {
         println("As you perform the solid snake and went further into the cave, you find some treasure chest\nDo you wish to open it?")
         choice = readLine
-        if (choice == "Yes".toLowerCase()) {
+        if (choice.toLowerCase == "yes") {
           println("IT WAS ACTUALLY A MIMIC")
           playerChoice()
         }

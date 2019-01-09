@@ -1,17 +1,17 @@
 class Collection {
-  def ExSet(){
+  def exSet(){
     val set = Set(1,2,3,4)
     val subSet = Set(5,7)
 
     println(subSet ++ set)
   }
-  def PatternMatch(food:String){
+  def patternMatch(food:String){
     food match{
       case "cake" => println(s"$food is totes here")
       case _ => println(s"$food is not food")
     }
   }
-  def ExMap(){
+  def exMap(){
     val map = scala.collection.mutable.Map(1 -> "ha",2 -> "bo")
     val map2 = Map(3->"jo")
 
@@ -23,11 +23,11 @@ class Collection {
     val list = List(1,2,3)
     println(list map(value => value * 10))
   }
-  def ExFlatMap(){
+  def exFlatMap(){
     val list = List("Hello","World")
     println(list map(_.toList))
   }
-  def ExForEach(){
+  def exForEach(){
     var sum = 0
     val list = List(1,2,3,4,1,2)
     list foreach(element => sum += element)
