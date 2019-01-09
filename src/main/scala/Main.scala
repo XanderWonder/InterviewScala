@@ -1,6 +1,6 @@
 object Main extends App{
- val session = new Story
- session.playerChoice()
+// val session = new Story
+// session.playerChoice()
 
  //val games = new CardGames
  //games.blackjack(readInt,readInt)
@@ -11,4 +11,6 @@ object Main extends App{
 // val exercise = new Exercise
 // //exercise.FirstSolution()
 // exercise.SecondSolution(99)
+
+ val newday = new WedExercise
 }

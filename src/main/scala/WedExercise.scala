@@ -1,0 +1,3 @@
+class WedExercise {
+  println("Hola")
+}
