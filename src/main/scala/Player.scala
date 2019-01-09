@@ -14,4 +14,5 @@ object Player {
     hit = random.nextInt(10)
     bonusArmour = random.nextInt(5)
   }
+  var plHealth = 0
 }

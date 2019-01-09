@@ -3,7 +3,7 @@ import scala.io.StdIn.{readLine,readInt}
 
 class Battle{
   val random: Random.type = scala.util.Random
-  def playerChoice(): Unit ={
+  def playerChoice(){
     println(s"Player health:${Player.health}\nPlayer attacks strength:${Player.attacks}\nEnemy health:${Enemy.health}\nEnemy strength:${Enemy.attacks}")
     println("\nAction menu\n1. Attack\n2. Defend\n3. Spells \n4.Run away")
     this.action()
@@ -21,49 +21,45 @@ class Battle{
     println(s"\nYour initiative${Player.initiative}\nEnemy initiative${Enemy.initiative}")
     if(Player.initiative > Enemy.initiative){playerPhase()}else{enemyPhase()}
   }
-  def playerPhase(): Unit ={
+  def playerPhase(){
     if(Player.hit > Enemy.hit){
       enemyLifecheck()
     }
     else{println("attack misses")
-      Player.Reroll()
-      Enemy.Reroll()
-      playerChoice()}
+      gameReroll()}
   }
-  def enemyPhase(): Unit ={
-    println(s"\nEnemy attacks strength${Enemy.attacks}\nHit ratio${Enemy.hit}")
+  def enemyPhase(){
+    println(s"\nEnemy attacks strength${Enemy.attacks}\nHit ratio${Enemy.hit}\nPlayer hit ratio ${Player.hit}")
     if(Enemy.hit > Player.hit){
       playerArmourcheck()
-      if(Player.health <= 0){println("\nYOU LOSE")}
     }else{println("Enemy misses")
-    playerChoice()}
+      gameReroll()}
   }
-  def playerArmourcheck(): Unit ={
+  def playerArmourcheck(){
     println("Enemy lands hit")
-    println(s"health:${Player.health}")
     val dmg = Player.armour + Player.bonusArmour - Enemy.attacks
     if(dmg > 0){
       println(s"You took $dmg damage ")
       Player.health - dmg
       playerLifecheck()
     }else{println("You took no damage")
-    playerChoice()}
+      gameReroll()}
   }
-  def playerLifecheck(): Unit ={
-    val halfDmg = Player.health - (Enemy.attacks / 2)
-    Player.health - halfDmg
-    if(Player.health <= 0){
-      println("DEAD")
-    }else{playerChoice()}
-    println("\nContinue fighting (yes or no)")
-    val choice = readLine
-    if(choice == "Yes".toLowerCase()){
-      Player.Reroll()
-      Enemy.Reroll()
-      this.action()
-    }else{println("\nYOU RUN AWAY")}
+  def playerLifecheck(){
+    Player.plHealth = Player.health - Enemy.attacks
+    Player.health = Player.plHealth
+    println(s"\nThe enemy has landed a clean hit ${Enemy.attacks}\nyour health is :${Player.health}")
+    if(Player.health <= 0 || Player.plHealth <= 0){
+      println("DEAD YOU LOSE")
+    }else{
+      println("\nContinue fighting (yes or no)")
+      val choice = readLine
+      if(choice == "Yes".toLowerCase()){
+        gameReroll()
+      }else{println("\nYOU RUN AWAY")}
+    }
   }
-  def enemyLifecheck(): Unit ={
+  def enemyLifecheck(){
     println("Player attack lands")
     Enemy.enHealth = Enemy.health - Player.attacks
     Enemy.health = Enemy.enHealth
@@ -71,24 +67,31 @@ class Battle{
     if(Enemy.health <= 0 || Enemy.enHealth <= 0){println("\nYOU WIN")}
     else playerChoice()
   }
+  def gameReroll(){
+    Player.Reroll()
+    Enemy.Reroll()
+    playerChoice()
+  }
   def defend(){
     Player.bonusArmour = random.nextInt(5)
     println(s"You gained bonus armour:${Player.bonusArmour}")
     this.action()
   }
   def spells(){
-      println("Time to create a spell\n Enter 1")
+    println("Time to create a spell\n Enter 1")
     readInt match {
-        case 1 => newSpells()
-        case _ => println("INVALID")
-      }
+      case 1 => newSpells()
+      case _ => println("INVALID")
     }
+  }
   def newSpells(){
-      println("Name your spell")
-      val spellName = readLine()
-      val damage = random.nextInt(20)
-      val concentration = random.nextInt(10)
-      println(s"\nYou have made $spellName\n$spellName damage:$damage\n$spellName cast time:$concentration")
-      if (concentration < 8){}else{}
-   }
+    println("Name your spell")
+    val spellName = readLine()
+    val concentration = random.nextInt(10)
+    println(s"\nYou have made the spell $spellName\n$spellName damage:${Player.attacks}\n$spellName Spell concentration:$concentration")
+    if (concentration < 8){
+      println(s"You have failed to cast the spell\nEnemy has attacked you ${Enemy.attacks}")
+      playerLifecheck()
+    }else{enemyLifecheck}
+  }
 }
