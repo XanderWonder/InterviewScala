@@ -26,7 +26,7 @@ class WedExercise {
   }
 
   def creditCard(card:Int){
-    val cardDets = ArrayBuffer(card)
+    val cardDets = List(card)
     if(cardDets.length > 11){
       detailsCheck(cardDets)
     }else{println("None Left")}
