@@ -13,5 +13,5 @@ object Main extends App{
 // exercise.SecondSolution(99)
 
  val newday = new WedExercise
- newday.BrokenKeyboard("bikoki")
+ newday.brokenKeyboard("lopo")
 }

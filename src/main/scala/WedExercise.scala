@@ -1,15 +1,17 @@
 import scala.io.Source
 
 class WedExercise {
-  def BrokenKeyboard(numWord:String){
-    val fileName = Source.fromFile("C:/Users/Admin/Desktop/Scala/wordnames.txt", "UTF-8").getLines.toList
+  def brokenKeyboard(wordEle:String){
+    val fileName = Source.fromFile("C:/Users/Admin/Desktop/Scala/wordnames.txt").getLines.toList
+    val wordElements = wordEle.substring(0,wordEle.length)
     for(line <- fileName){
-      if(line == numWord){
+      if(line.contains(wordElements)){
         println(line)
       }else{}
     }
   }
-  def CreditCard(){
+
+  def creditCard(){
 
   }
 }
