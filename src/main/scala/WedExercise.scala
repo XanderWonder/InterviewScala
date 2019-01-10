@@ -31,8 +31,12 @@ class WedExercise {
     var normalDetails = 0
     var sumTotal = 0
     for (cardType <- 1 to cardNum){
-      if(cardType%2 == 0){
-        unquieDetails = cardNum * 2
+      if(cardNum%2 == 0){
+        if(cardType < 10){
+          unquieDetails = (cardNum%10) + (cardNum/10)
+        }else{
+          unquieDetails = cardNum * 2
+        }
       }else{
         normalDetails = cardNum
       }
