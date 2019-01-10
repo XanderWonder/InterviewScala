@@ -16,5 +16,5 @@ object Main extends App{
  //newday.brokenKeyboard(1)
  //newday.creditCard(readInt())
  //newday.workBrokenKey()
- //newday.creditCard(readInt())
+ newday.cardDetails
 }

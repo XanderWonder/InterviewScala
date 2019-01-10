@@ -23,20 +23,20 @@ class WedExercise {
     }
   }
 
-  val cardDetails = List()
+  val cardDetails = List(1,1,1,1,1)
   cardDetails.foreach(cardDetails => detailsCheck(cardDetails))
 
   def detailsCheck(cardNum:Int){
-    var unquieDets = 0
-    var normalDets = 0
+    var unquieDetails = 0
+    var normalDetails = 0
     var sumTotal = 0
     for (cardType <- 1 to cardNum){
-      if(cardNum%2 == 0){
-        unquieDets = cardNum * 2
+      if(cardType%2 == 0){
+        unquieDetails = cardNum * 2
       }else{
-        normalDets = cardNum
+        normalDetails = cardNum
       }
-      sumTotal = normalDets + unquieDets
+      sumTotal = normalDetails + unquieDetails
       testCreditCard(sumTotal)
     }
   }
