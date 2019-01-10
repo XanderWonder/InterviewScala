@@ -12,9 +12,12 @@ object Main extends App{
 // //exercise.FirstSolution()
 // exercise.SecondSolution(99)
 
- val newday = new WedExercise
+ //val newday = new WedExercise
  //newday.brokenKeyboard(1)
  //newday.creditCard(readInt())
  //newday.workBrokenKey()
- newday.cardDetails
+ //newday.cardDetails
+
+ val dayman = new ThursdayEx
+ dayman
 }
