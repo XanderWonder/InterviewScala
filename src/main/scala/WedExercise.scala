@@ -2,25 +2,20 @@ import scala.collection.mutable.ArrayBuffer
 import scala.io.Source
 import scala.io.StdIn._
 
-class WedExercise {
+class WedExercise(){
   def brokenKeyboard(wordEle:Int){
     var emptyWord = ""
-    for(reRun <- 1 to wordEle){
-      if(0 < reRun){
-        emptyWord = readLine
-        bigWords(emptyWord)
-      }
+    for(i <- 0 until  wordEle){
+        println("Enter words available")
+        emptyWord = readLine().toLowerCase()
     }
+      bigWords(emptyWord.toArray)
   }
 
-  def bigWords(words:String){
-    val fileName = Source.fromFile("C:/Users/Admin/Desktop/Scala/wordnames.txt").getLines.toList
-    for(line <- fileName){
-      if(line.contains(words)){
-
-        println(line)
-      }
-    }
+  def bigWords(words:Array[Char]) : Unit ={
+    var fileName = Source.fromFile("C:/Users/Admin/Desktop/Scala/wordnames.txt").getLines.toList
+    ('a' to 'z').toArray.diff(words).foreach(keywords => fileName = fileName.filter(!_.contains(keywords)))
+    println(fileName.sortBy(_.length).last)
   }
 
   def detailsCheck(cardNum:Long){
@@ -28,15 +23,14 @@ class WedExercise {
     val cardNumList = List(cardNum.toString)
     for (id <- 1 to cardNumList.length) {
       var secondId = id
-      val normalId = id
         if (secondId < 10){
           secondId = (secondId%10) + (secondId/10)
         }else{secondId = secondId * 2}
-        sumTotal = normalId + secondId
+        sumTotal = id + secondId
         print(sumTotal)
-//       if(sumTotal%10 == 0){
-//         print("Tis Valid")
-//       }else{print("Not Valid")}
+       if(sumTotal%10 == 0){
+         print("Tis Valid")
+       }else{print("Not Valid")}
     }
   }
 
