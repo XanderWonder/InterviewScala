@@ -17,7 +17,6 @@ class WedExercise {
     val fileName = Source.fromFile("C:/Users/Admin/Desktop/Scala/wordnames.txt").getLines.toList
     for (line <- fileName) {
       if (line.contains(words)) {
-
         println(line)
       }
     }
@@ -29,8 +28,8 @@ class WedExercise {
     val specialNums = scala.collection.mutable.ArrayBuffer[Int]()
     var time = 0
     while(time <= tcardDets.length - 2){
-      normalNums.append(tcardDets.substring(time,time + 1).toInt)
-      specialNums.append(tcardDets.substring(time + 1,time + 2).toInt)
+      specialNums.append(tcardDets.substring(time,time + 1).toInt)
+      normalNums.append(tcardDets.substring(time + 1,time + 2).toInt)
       time += 2
     }
     detailsCheck(specialNums,normalNums)
