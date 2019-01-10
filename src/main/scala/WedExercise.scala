@@ -3,23 +3,19 @@ import scala.io.Source
 import scala.io.StdIn._
 
 class WedExercise {
-  def brokenKeyboard(wordEle: Int) {
+  def brokenKeyboard(wordEle:Int){
     var emptyWord = ""
-    for (reRun <- 1 to wordEle) {
-      if (0 < reRun) {
-        emptyWord = readLine
-        bigWords(emptyWord)
-      }
+    for(i <- 0 until  wordEle){
+      println("Enter words available")
+      emptyWord = readLine().toLowerCase()
     }
+    bigWords(emptyWord.toArray)
   }
 
-  def bigWords(words: String) {
-    val fileName = Source.fromFile("C:/Users/Admin/Desktop/Scala/wordnames.txt").getLines.toList
-    for (line <- fileName) {
-      if (line.contains(words)) {
-        println(line)
-      }
-    }
+  def bigWords(words:Array[Char]) : Unit ={
+    var fileName = Source.fromFile("C:/Users/Admin/Desktop/Scala/wordnames.txt").getLines.toList
+    ('a' to 'z').toArray.diff(words).foreach(keywords => fileName = fileName.filter(!_.contains(keywords)))
+    println(fileName.sortBy(_.length).last)
   }
 
   def readCardNums(cardDets:Long): Unit ={
