@@ -5,19 +5,16 @@ object Main extends App{
  //val games = new CardGames
  //games.blackjack(readInt,readInt)
 
- val collect = new Collection
- collect.patternMatch(1)
+ //val collect = new Collection
+ //collect.ExFlatMap()
 
 // val exercise = new Exercise
 // //exercise.FirstSolution()
 // exercise.SecondSolution(99)
 
- //val newday = new WedExercise
+ val newday = new WedExercise
  //newday.brokenKeyboard(1)
  //newday.creditCard(readInt())
  //newday.workBrokenKey()
- //newday.cardDetails
-
-// val dayman = new ThursdayEx
-// dayman
+ newday.readCardNums()
 }
