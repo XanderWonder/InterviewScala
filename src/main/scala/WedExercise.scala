@@ -15,40 +15,29 @@ class WedExercise {
 
   def bigWords(words:String){
     val fileName = Source.fromFile("C:/Users/Admin/Desktop/Scala/wordnames.txt").getLines.toList
-    var longWord = ""
     for(line <- fileName){
       if(line.contains(words)){
+
         println(line)
       }
     }
   }
 
-  val cardDetails = List(1,1,1,1,1)
-  cardDetails.foreach(cardDetails => detailsCheck(cardDetails))
-
-  def detailsCheck(cardNum:Int){
-    var unquieDetails = 0
-    var normalDetails = 0
+  def detailsCheck(cardNum:Long){
     var sumTotal = 0
-    for (cardType <- 1 to cardNum){
-      if(cardNum%2 == 0){
-        if(cardType < 10){
-          unquieDetails = (cardNum%10) + (cardNum/10)
-        }else{
-          unquieDetails = cardNum * 2
-        }
-      }else{
-        normalDetails = cardNum
-      }
-      sumTotal = normalDetails + unquieDetails
-      testCreditCard(sumTotal)
+    val cardNumList = List(cardNum.toString)
+    for (id <- 1 to cardNumList.length) {
+      var secondId = id
+      val normalId = id
+        if (secondId < 10){
+          secondId = (secondId%10) + (secondId/10)
+        }else{secondId = secondId * 2}
+        sumTotal = normalId + secondId
+        print(sumTotal)
+//       if(sumTotal%10 == 0){
+//         print("Tis Valid")
+//       }else{print("Not Valid")}
     }
-  }
-
-  def testCreditCard(identyCheck:Int): Unit ={
-    if(identyCheck%10 == 0){
-      println("Card details are valid")
-    }else{println("Not Valid")}
   }
 
   def workBrokenKey():Unit ={
