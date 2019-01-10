@@ -1,4 +1,4 @@
 object Main extends App{
- val newday = new WedExercise
- newday.readCardNums(readLong())
+ val numer = new ExersiseForDays
+  numer.number(120)
 }
