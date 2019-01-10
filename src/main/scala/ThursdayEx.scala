@@ -1,3 +1,3 @@
 class ThursdayEx {
-  print("Hola")
+  
 }

@@ -5,9 +5,10 @@ class Collection {
 
     println(subSet ++ set)
   }
-  def patternMatch(food:String){
+  def patternMatch(food:Int){
+    val keymap = Map(1 -> "Hey", 2 -> "Hola")
     food match{
-      case "cake" => println(s"$food is totes here")
+      case  keymap.keys => print(keymap.values)
       case _ => println(s"$food is not food")
     }
   }

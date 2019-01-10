@@ -5,8 +5,8 @@ object Main extends App{
  //val games = new CardGames
  //games.blackjack(readInt,readInt)
 
- //val collect = new Collection
- //collect.ExFlatMap()
+ val collect = new Collection
+ collect.patternMatch(1)
 
 // val exercise = new Exercise
 // //exercise.FirstSolution()
@@ -18,6 +18,6 @@ object Main extends App{
  //newday.workBrokenKey()
  //newday.cardDetails
 
- val dayman = new ThursdayEx
- dayman
+// val dayman = new ThursdayEx
+// dayman
 }
