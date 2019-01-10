@@ -7,8 +7,9 @@ class Collection {
   }
   def patternMatch(keyNum:Int){
     val keymap = collection.mutable.Map(1 -> "Hey", 2 -> "Hola")
+    val keyNum = keymap.keys.toList.toString()
     keyNum match{
-      case  keymap => print(keymap)
+      case "1" => keymap.values
       case _ => println(s"$keyNum is not food")
     }
   }

@@ -23,28 +23,28 @@ class WedExercise {
     }
   }
 
-  def readCardNums(cardDets:String): Unit ={
+  def readCardNums(cardDets:Long): Unit ={
+    val tcardDets = cardDets.toString
     val normalNums = scala.collection.mutable.ArrayBuffer[Int]()
     val specialNums = scala.collection.mutable.ArrayBuffer[Int]()
     var time = 0
-    while(time <= cardDets.length()-2){
-      normalNums.append(cardDets.substring(time,time-1).toInt)
-      specialNums.append(cardDets.substring(time+1,time+2).toInt)
+    while(time <= tcardDets.length - 2){
+      normalNums.append(tcardDets.substring(time,time + 1).toInt)
+      specialNums.append(tcardDets.substring(time + 1,time + 2).toInt)
       time += 2
     }
-      detailsCheck(specialNums,normalNums)
+    detailsCheck(specialNums,normalNums)
   }
   def detailsCheck(evenNums:ArrayBuffer[Int],oddNum:ArrayBuffer[Int]) {
     val calculation = scala.collection.mutable.ArrayBuffer[Int]()
     var adder = 0
     evenNums.foreach(numCheck =>{
       var matchCheck = numCheck * 2
-      if(matchCheck>9){matchCheck=matchCheck-9}
+      if(matchCheck < 9){matchCheck = matchCheck - 9}
       calculation.append(matchCheck)
     })
     calculation.foreach(plus => adder += plus)
     oddNum.foreach(plus => adder += plus)
-
     if(adder%10 == 0){print("Tis valid")}
     else print("Nope")
   }
