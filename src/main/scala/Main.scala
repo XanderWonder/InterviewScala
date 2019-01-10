@@ -13,8 +13,8 @@ object Main extends App{
 // exercise.SecondSolution(99)
 
  val newday = new WedExercise
- //newday.brokenKeyboard(readInt())
+ //newday.brokenKeyboard(1)
  //newday.creditCard(readInt())
  //newday.workBrokenKey()
- newday.creditCard(readInt())
+ //newday.creditCard(readInt())
 }

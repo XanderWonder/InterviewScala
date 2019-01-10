@@ -16,21 +16,15 @@ class WedExercise {
   def bigWords(words:String){
     val fileName = Source.fromFile("C:/Users/Admin/Desktop/Scala/wordnames.txt").getLines.toList
     var longWord = ""
-    val tWords = fileName
-    for(line <- 1 to words.length){
-      if(tWords.contains(words.substring(line - 1,line))){
-        //longWord = tWords
-        println(longWord)
+    for(line <- fileName){
+      if(line.contains(words)){
+        println(line)
       }
     }
   }
 
-  def creditCard(card:Int){
-    val cardDets = List(card)
-    if(cardDets.length > 11){
-      detailsCheck(cardDets)
-    }else{println("None Left")}
-  }
+  val cardDetails = List()
+  cardDetails.foreach(cardDetails => detailsCheck(cardDetails))
 
   def detailsCheck(cardNum:Int){
     var unquieDets = 0
