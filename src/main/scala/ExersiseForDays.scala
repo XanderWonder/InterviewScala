@@ -92,7 +92,7 @@ class ExersiseForDays {
   }
   def aiAction(playerAct:String): Unit ={
     var aiAct = ""
-    random.nextInt(4-1) match {
+    random.nextInt(3) match {
       case 1 => aiAct = "rock"
       case 2 => aiAct = "paper"
       case 3 => aiAct = "scissor"
@@ -112,7 +112,8 @@ class ExersiseForDays {
     rpsGameWorld(pscore,aiscore)
   }
   def rpsGameWorld(playerScore:Int,aiScore:Int): Unit ={
-    if(playerScore < aiScore) println("Ya win")
+    if(playerScore > aiScore) println("Ya win")
     else println("Ai Wins")
   }
+
 }
