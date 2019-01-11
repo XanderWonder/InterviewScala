@@ -115,4 +115,40 @@ class ExersiseForDays {
     if(playerScore > aiScore) println("Ya win")
     else println("Ai Wins")
   }
+  def wordsToCyhper(words:String): Unit ={
+      for(letters <- words.split("")){cyhper(letters)}
+  }
+  def cyhper(words:String): Unit ={
+    var cyherword = scala.collection.mutable.ArrayBuffer[String]()
+    words match {
+      case "a" => cyherword.append("z")
+      case "b" =>cyherword.append("y")
+      case "c" =>cyherword.append("x")
+      case "d" =>cyherword.append("w")
+      case "e" =>cyherword.append("v")
+      case "f" =>cyherword.append("u")
+      case "g" =>cyherword.append("t")
+      case "h" =>cyherword.append("s")
+      case "i" =>cyherword.append("r")
+      case "j" =>cyherword.append("q")
+      case "k" =>cyherword.append("p")
+      case "l" =>cyherword.append("o")
+      case "m" =>cyherword.append("n")
+      case "n" =>cyherword.append("n")
+      case "o" =>cyherword.append("l")
+      case "p" =>cyherword.append("k")
+      case "q" =>cyherword.append("j")
+      case "r" =>cyherword.append("i")
+      case "s" =>cyherword.append("h")
+      case "t" =>cyherword.append("g")
+      case "u" =>cyherword.append("f")
+      case "v" =>cyherword.append("e")
+      case "w" =>cyherword.append("d")
+      case "x" =>cyherword.append("c")
+      case "y" =>cyherword.append("b")
+      case "z" =>cyherword.append("a")
+      case  _  =>cyherword.append(" ")
+    }
+    println(cyherword)
+  }
 }
