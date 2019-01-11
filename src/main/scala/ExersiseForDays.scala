@@ -2,7 +2,7 @@ import scala.util.matching.Regex
 import scala.collection.mutable.ArrayBuffer
 
 class ExersiseForDays {
-    def number(num:Int): Unit ={
+  def factorial(num:Int): Unit ={
       var factorial = 1
       var multiplier = 1
       while(factorial < num){
@@ -12,8 +12,9 @@ class ExersiseForDays {
       if(factorial == num){println(s"This is a factorial of $multiplier and $num")}
       else{println("Nope")}
     }
-  def morseCodeRegex(morseCode:String): Unit ={
-    for(patternMatch <- morseCode.split("/")){morseCodetoWord(patternMatch)}
+  def morseCodeRegex(morseCode:String)(wordCode:String): Unit ={
+    for(patternMatch <- morseCode.split(" ")){morseCodetoWord(patternMatch)}
+    for(wordMatch <- wordCode.split("")){wordToMorse(wordMatch)}
   }
   def morseCodetoWord(code:String): Unit ={
     val fullWord = scala.collection.mutable.ArrayBuffer[String]()
@@ -47,39 +48,66 @@ class ExersiseForDays {
     }
     println(fullWord)
   }
-  def wordRegex(wordr:String): Unit ={
-
-  }
   def wordToMorse(word:String): Unit ={
     val morseCode = scala.collection.mutable.ArrayBuffer[String]()
-    word match {
-      case "A" => morseCode.append(".-")
-      case "B" => morseCode.append("-...")
-      case "C" => morseCode.append("-.-.")
-      case "D" => morseCode.append("-..")
-      case "E" => morseCode.append(".")
-      case "F" => morseCode.append("..-.")
-      case "G" => morseCode.append("--.")
-      case "H" => morseCode.append("....")
-      case "I" => morseCode.append("..")
-      case "J" => morseCode.append(".---")
-      case "K" => morseCode.append("-.-")
-      case "L" => morseCode.append(".-..")
-      case "M" => morseCode.append("--")
-      case "N" => morseCode.append("-.")
-      case "O" => morseCode.append("---")
-      case "P" => morseCode.append(".--.")
-      case "Q" => morseCode.append("--.-")
-      case "R" => morseCode.append(".-.")
-      case "S" => morseCode.append("...")
-      case "T" => morseCode.append("-")
-      case "U" => morseCode.append("..-")
-      case "V" => morseCode.append("...-")
-      case "W" => morseCode.append(".--")
-      case "X" => morseCode.append("-..-")
-      case "Y" => morseCode.append("-.--")
-      case "Z" => morseCode.append("--..")
+    word.toLowerCase() match {
+      case "a" => morseCode.append(".-")
+      case "b" => morseCode.append("-...")
+      case "c" => morseCode.append("-.-.")
+      case "d" => morseCode.append("-..")
+      case "e" => morseCode.append(".")
+      case "f" => morseCode.append("..-.")
+      case "g" => morseCode.append("--.")
+      case "h" => morseCode.append("....")
+      case "i" => morseCode.append("..")
+      case "j" => morseCode.append(".---")
+      case "k" => morseCode.append("-.-")
+      case "l" => morseCode.append(".-..")
+      case "m" => morseCode.append("--")
+      case "n" => morseCode.append("-.")
+      case "o" => morseCode.append("---")
+      case "p" => morseCode.append(".--.")
+      case "q" => morseCode.append("--.-")
+      case "r" => morseCode.append(".-.")
+      case "s" => morseCode.append("...")
+      case "t" => morseCode.append("-")
+      case "u" => morseCode.append("..-")
+      case "v" => morseCode.append("...-")
+      case "w" => morseCode.append(".--")
+      case "x" => morseCode.append("-..-")
+      case "y" => morseCode.append("-.--")
+      case "z" => morseCode.append("--..")
     }
     println(morseCode)
+  }
+  def playerAction(): String ={
+    println("Choose your weapon\n1.Rocks\n2.Paper\n3.Scissor")
+    readLine().toLowerCase() match {
+      case "rock" => aiAction("rock").toString
+      case "paper" =>aiAction("paper").toString
+      case "scissor" =>aiAction("scissor").toString
+    }
+  }
+  def aiAction(playerAct:String): Unit ={
+    rpsRule(playerAct)("paper")
+  }
+  def rpsRule(playerChoice:String)(aiChoice:String): Unit ={
+    var pscore = 0
+    var aiscore = 0
+    playerChoice.toLowerCase match {
+      case "rock" => if(aiChoice == "scissors"){pscore = pscore + 1}else{aiscore = aiscore + 1}
+      case "paper" => if(aiChoice == "rock"){pscore = pscore + 1}else{aiscore = aiscore + 1}
+      case "scissors" => if(aiChoice == "paper"){pscore = pscore + 1}else{aiscore = aiscore + 1}
+    }
+    aiChoice.toLowerCase match{
+      case "rock" => if(playerChoice == "scissors"){aiscore = aiscore + 1}else{pscore = pscore + 1}
+      case "paper" => if(playerChoice == "rock"){aiscore = aiscore + 1}else{pscore = pscore + 1}
+      case "scissors" => if(playerChoice == "paper"){aiscore = aiscore + 1}else{pscore = pscore + 1}
+    }
+    rpsGameWorld(pscore,aiscore)
+  }
+  def rpsGameWorld(playerScore:Int,aiScore:Int): Unit ={
+    if(playerScore < aiScore) println("Ya win")
+    else println("Ai Wins")
   }
 }

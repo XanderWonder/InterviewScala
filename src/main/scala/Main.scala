@@ -1,4 +1,6 @@
 object Main extends App{
  val numer = new ExersiseForDays
-  numer.morseCodeRegex("--/.-/-.-./")
+ //numer.factorial(120)
+  //numer.morseCodeRegex(readLine())(readLine())
+ numer.playerAction()
 }
