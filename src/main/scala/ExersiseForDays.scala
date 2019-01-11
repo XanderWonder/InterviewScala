@@ -98,6 +98,7 @@ class ExersiseForDays {
       case 3 => aiAct = "scissor"
       case _ => aiAct = "invalid"
     }
+    println(s"\nPlayer move${playerAct}\nAi move${aiAct}")
     rpsRule(playerAct)(aiAct)
   }
   def rpsRule(playerChoice:String)(aiChoice:String): Unit ={

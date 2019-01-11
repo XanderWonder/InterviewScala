@@ -1,4 +1,4 @@
 object Main extends App{
  val numer = new ExersiseForDays
- numer.wordsToCyhper(readLine())
+ numer.playerAction()
 }
