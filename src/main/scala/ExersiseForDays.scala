@@ -9,4 +9,7 @@ class ExersiseForDays {
       if(factorial == num){println(s"This is a factorial of $multiplier and $num")}
       else{println("Nope")}
     }
+  def morseCodeToWords(): Unit ={
+
+  }
 }
