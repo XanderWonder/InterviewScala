@@ -48,7 +48,7 @@ class ExersiseForDays {
       case "-.--" => fullWord.append("Y")
       case "--.." => fullWord.append("Z")
     }
-    println(fullWord)
+    fullWord.foreach(println)
   }
   def wordToMorse(word:String): Unit ={
     val morseCode = scala.collection.mutable.ArrayBuffer[String]()
@@ -80,7 +80,7 @@ class ExersiseForDays {
       case "y" => morseCode.append("-.--")
       case "z" => morseCode.append("--..")
     }
-    println(morseCode)
+    morseCode.foreach(println)
   }
   def playerAction(): String ={
     println("Choose your weapon\n1.Rock\n2.Paper\n3.Scissor")
@@ -115,5 +115,4 @@ class ExersiseForDays {
     if(playerScore > aiScore) println("Ya win")
     else println("Ai Wins")
   }
-
 }
