@@ -1,7 +1,9 @@
 import scala.util.matching.Regex
 import scala.collection.mutable.ArrayBuffer
+import scala.util.Random
 
 class ExersiseForDays {
+  val random: Random.type = scala.util.Random
   def factorial(num:Int): Unit ={
       var factorial = 1
       var multiplier = 1
@@ -81,7 +83,7 @@ class ExersiseForDays {
     println(morseCode)
   }
   def playerAction(): String ={
-    println("Choose your weapon\n1.Rocks\n2.Paper\n3.Scissor")
+    println("Choose your weapon\n1.Rock\n2.Paper\n3.Scissor")
     readLine().toLowerCase() match {
       case "rock" => aiAction("rock").toString
       case "paper" =>aiAction("paper").toString
@@ -89,20 +91,23 @@ class ExersiseForDays {
     }
   }
   def aiAction(playerAct:String): Unit ={
-    rpsRule(playerAct)("paper")
+    var aiAct = ""
+    random.nextInt(4-1) match {
+      case 1 => aiAct = "rock"
+      case 2 => aiAct = "paper"
+      case 3 => aiAct = "scissor"
+      case _ => aiAct = "invalid"
+    }
+    rpsRule(playerAct)(aiAct)
   }
   def rpsRule(playerChoice:String)(aiChoice:String): Unit ={
     var pscore = 0
     var aiscore = 0
     playerChoice.toLowerCase match {
-      case "rock" => if(aiChoice == "scissors"){pscore = pscore + 1}else{aiscore = aiscore + 1}
-      case "paper" => if(aiChoice == "rock"){pscore = pscore + 1}else{aiscore = aiscore + 1}
-      case "scissors" => if(aiChoice == "paper"){pscore = pscore + 1}else{aiscore = aiscore + 1}
-    }
-    aiChoice.toLowerCase match{
-      case "rock" => if(playerChoice == "scissors"){aiscore = aiscore + 1}else{pscore = pscore + 1}
-      case "paper" => if(playerChoice == "rock"){aiscore = aiscore + 1}else{pscore = pscore + 1}
-      case "scissors" => if(playerChoice == "paper"){aiscore = aiscore + 1}else{pscore = pscore + 1}
+      case "rock" => if(aiChoice == "scissors") aiscore = aiscore + 1 else pscore = pscore + 1
+      case "paper" => if(aiChoice == "rock") aiscore = aiscore + 1 else pscore = pscore + 1
+      case "scissor" => if(aiChoice == "paper") aiscore = aiscore + 1  else pscore = pscore + 1
+      case "invalid" => println("Wrong combinations")
     }
     rpsGameWorld(pscore,aiscore)
   }
