@@ -12,6 +12,7 @@ class Collection {
       }
     }
   }
+
   def exMap(){
     val map = scala.collection.mutable.Map(1 -> "ha",2 -> "bo")
     val map2 = Map(3->"jo")
@@ -23,16 +24,19 @@ class Collection {
     val list = List(1,2,3)
     println(list map(value => value * 10))
   }
+
   def exFlatMap(){
-    val list = List(1,2,3,4).map(_*2)
+    val list = List(1,1).flatMap{values => List(values,values+values)}
     println(list)
   }
+
   def exForEach(){
     var sum = 0
     val list = List(1,2,3,4,1,2)
     list foreach(element => sum += element)
     println(sum)
   }
+
   def exTuple(): Unit ={
     val tuple = (1,2)
     println(tuple._1 + 5)
