@@ -4,15 +4,16 @@ import scala.util.Random
 
 class ExersiseForDays {
   val random: Random.type = scala.util.Random
-  def factorial(num:Int): Unit ={
+  def factorial(num:Int):Int ={
       var factorial = 1
       var multiplier = 1
       while(factorial < num){
         multiplier = multiplier + 1
         factorial = factorial * multiplier
       }
-      if(factorial == num){println(s"This is a factorial of $multiplier and $num")}
-      else{println("Nope")}
+      multiplier
+//      if(factorial == num) println(s"This is a factorial of $multiplier and $num")
+//      else println("Nope")
     }
   def morseCodeRegex(morseCode:String)(wordCode:String): Unit ={
     for(patternMatch <- morseCode.split(" ")){morseCodetoWord(patternMatch)}
@@ -96,19 +97,19 @@ class ExersiseForDays {
       case 1 => aiAct = "rock"
       case 2 => aiAct = "paper"
       case 3 => aiAct = "scissor"
-      case _ => aiAct = "invalid"
+      case _ => aiAct = "invalid automatic win"
     }
-    println(s"\nPlayer move${playerAct}\nAi move${aiAct}")
+    println(s"\nPlayer move ${playerAct}\nAi move ${aiAct}")
     rpsRule(playerAct)(aiAct)
   }
   def rpsRule(playerChoice:String)(aiChoice:String): Unit ={
     var pscore = 0
-
     var aiscore = 0
+    if(playerChoice == aiChoice){println(s"You have drawn with the Ai, Time to go back choose again ${playerAction()}")}
     playerChoice.toLowerCase match {
-      case "rock" => if(aiChoice == "scissors") aiscore = aiscore + 1 else pscore = pscore + 1
-      case "paper" => if(aiChoice == "rock") aiscore = aiscore + 1 else pscore = pscore + 1
-      case "scissor" => if(aiChoice == "paper") aiscore = aiscore + 1  else pscore = pscore + 1
+      case "rock" => if(aiChoice == "paper") aiscore = aiscore + 1 else pscore = pscore + 1
+      case "paper" => if(aiChoice == "scissor") aiscore = aiscore + 1 else pscore = pscore + 1
+      case "scissor" => if(aiChoice == "rock") aiscore = aiscore + 1  else pscore = pscore + 1
       case "invalid" => println("Wrong combinations")
     }
     rpsGameWorld(pscore,aiscore)
