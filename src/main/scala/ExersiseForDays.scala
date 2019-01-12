@@ -154,4 +154,9 @@ class ExersiseForDays {
     }
     println(cyherword)
   }
+  def palindrome(phrase:String): Unit ={
+    val palindrome = phrase.reverse
+    if(palindrome == phrase){println(s"this word is a palindrome $phrase")}
+    else println(s"nope this word is not a palindrome $phrase")
+  }
 }

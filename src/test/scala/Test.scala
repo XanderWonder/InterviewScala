@@ -6,7 +6,6 @@ class Test extends UnitSpec{
     val tester = new ExersiseForDays()
     assert(tester.factorial(num = 120) == 5)
   }
-
-
+  ""
 
 }
