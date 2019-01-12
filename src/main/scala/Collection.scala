@@ -6,9 +6,11 @@ class Collection {
   }
 
   def patternMatch(keyNum:Int){
-    val keymap = Map(1 -> "Hey", 2 -> "Hola").map{keyValue:(Int,String) =>
-      keyValue match {case (key,value) => (key,value)}}
-
+    val keymap = Map(1 -> 2, 2 -> 2).map{keyNum:(Int,Int) =>
+      keyNum match {
+        case (key,value) => println(s"$key and ${value*2}")
+      }
+    }
   }
   def exMap(){
     val map = scala.collection.mutable.Map(1 -> "ha",2 -> "bo")

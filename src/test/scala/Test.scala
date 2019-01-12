@@ -7,4 +7,6 @@ class Test extends UnitSpec{
     assert(tester.factorial(num = 120) == 5)
   }
 
+
+
 }
