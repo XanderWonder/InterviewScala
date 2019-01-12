@@ -1,7 +1,7 @@
 object Main extends App{
-// val numer = new ExersiseForDays
-// numer.playerAction()
+ val numer = new ExersiseForDays
+ numer.cyhper("Hello there")
 
- val numers = new Collection
- numers.exFlatMap()
+// val numers = new Collection
+// numers.exFlatMap()
 }

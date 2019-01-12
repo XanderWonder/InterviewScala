@@ -6,6 +6,9 @@ class Test extends UnitSpec{
     val tester = new ExersiseForDays()
     assert(tester.factorial(num = 120) == 5)
   }
-  ""
+  "A palindrome function that takes in a string phrase" should "return either a palindrome or a not palindrome" in {
+    val tester = new ExersiseForDays
+    assert(tester.palindrome("car".reverse) == "car")
+  }
 
 }
