@@ -103,6 +103,7 @@ class ExersiseForDays {
   }
   def rpsRule(playerChoice:String)(aiChoice:String): Unit ={
     var pscore = 0
+
     var aiscore = 0
     playerChoice.toLowerCase match {
       case "rock" => if(aiChoice == "scissors") aiscore = aiscore + 1 else pscore = pscore + 1
