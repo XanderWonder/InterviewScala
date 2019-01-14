@@ -1,6 +1,6 @@
 object Main extends App{
  val numer = new ExersiseForDays
- numer.cyhper("Hello there")
+ numer.morseCodeRegex(readLine())(readLine())
 
 // val numers = new Collection
 // numers.exFlatMap()

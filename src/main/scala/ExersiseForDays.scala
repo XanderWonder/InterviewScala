@@ -49,7 +49,7 @@ class ExersiseForDays {
       case "-.--" => fullWord.append("Y")
       case "--.." => fullWord.append("Z")
     }
-    fullWord.foreach(println)
+    fullWord.foreach(print)
   }
   def wordToMorse(word:String): Unit ={
     val morseCode = scala.collection.mutable.ArrayBuffer[String]()
@@ -81,7 +81,7 @@ class ExersiseForDays {
       case "y" => morseCode.append("-.--")
       case "z" => morseCode.append("--..")
     }
-    morseCode.foreach(println)
+    morseCode.foreach(print)
   }
   def playerAction(): String ={
     println("Choose your weapon\n1.Rock\n2.Paper\n3.Scissor")
@@ -122,37 +122,37 @@ class ExersiseForDays {
       for(letters <- words.split("")){cyhper(letters)}
   }
   def cyhper(words:String): Unit ={
-    var cyherword = scala.collection.mutable.ArrayBuffer[String]()
+    val cyherword = scala.collection.mutable.ArrayBuffer[String]()
     words match {
-      case "a" => cyherword.append(random.nextString(words.length))
-      case "b" =>cyherword.append(random.nextString(words.length))
-      case "c" =>cyherword.append(random.nextString(words.length))
-      case "d" =>cyherword.append(random.nextString(words.length))
-      case "e" =>cyherword.append(random.nextString(words.length))
-      case "f" =>cyherword.append(random.nextString(words.length))
-      case "g" =>cyherword.append(random.nextString(words.length))
-      case "h" =>cyherword.append(random.nextString(words.length))
-      case "i" =>cyherword.append(random.nextString(words.length))
-      case "j" =>cyherword.append(random.nextString(words.length))
-      case "k" =>cyherword.append(random.nextString(words.length))
-      case "l" =>cyherword.append(random.nextString(words.length))
-      case "m" =>cyherword.append(random.nextString(words.length))
-      case "n" =>cyherword.append(random.nextString(words.length))
-      case "o" =>cyherword.append(random.nextString(words.length))
-      case "p" =>cyherword.append(random.nextString(words.length))
-      case "q" =>cyherword.append(random.nextString(words.length))
-      case "r" =>cyherword.append(random.nextString(words.length))
-      case "s" =>cyherword.append(random.nextString(words.length))
-      case "t" =>cyherword.append(random.nextString(words.length))
-      case "u" =>cyherword.append(random.nextString(words.length))
-      case "v" =>cyherword.append(random.nextString(words.length))
-      case "w" =>cyherword.append(random.nextString(words.length))
-      case "x" =>cyherword.append(random.nextString(words.length))
-      case "y" =>cyherword.append(random.nextString(words.length))
-      case "z" =>cyherword.append(random.nextString(words.length))
+      case "a" =>cyherword.append(random.nextString(26))
+      case "b" =>cyherword.append(random.nextString(26))
+      case "c" =>cyherword.append(random.nextString(26))
+      case "d" =>cyherword.append(random.nextString(26))
+      case "e" =>cyherword.append(random.nextString(26))
+      case "f" =>cyherword.append(random.nextString(26))
+      case "g" =>cyherword.append(random.nextString(26))
+      case "h" =>cyherword.append(random.nextString(26))
+      case "i" =>cyherword.append(random.nextString(26))
+      case "j" =>cyherword.append(random.nextString(26))
+      case "k" =>cyherword.append(random.nextString(26))
+      case "l" =>cyherword.append(random.nextString(26))
+      case "m" =>cyherword.append(random.nextString(26))
+      case "n" =>cyherword.append(random.nextString(26))
+      case "o" =>cyherword.append(random.nextString(26))
+      case "p" =>cyherword.append(random.nextString(26))
+      case "q" =>cyherword.append(random.nextString(26))
+      case "r" =>cyherword.append(random.nextString(26))
+      case "s" =>cyherword.append(random.nextString(26))
+      case "t" =>cyherword.append(random.nextString(26))
+      case "u" =>cyherword.append(random.nextString(26))
+      case "v" =>cyherword.append(random.nextString(26))
+      case "w" =>cyherword.append(random.nextString(26))
+      case "x" =>cyherword.append(random.nextString(26))
+      case "y" =>cyherword.append(random.nextString(26))
+      case "z" =>cyherword.append(random.nextString(26))
       case  _  =>cyherword.append(" ")
     }
-    println(cyherword)
+    print(cyherword)
   }
   def palindrome(phrase:String): Unit ={
     val palindrome = phrase.reverse
