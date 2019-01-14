@@ -1,5 +1,4 @@
-
-  abstract class superClass{
+ abstract class superClass{
     val messsage:String
   }
   class nextClass extends superClass{
