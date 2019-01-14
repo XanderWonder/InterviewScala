@@ -10,5 +10,4 @@ class Test extends UnitSpec{
     val tester = new ExersiseForDays
     assert(tester.palindrome("car".reverse) == "car")
   }
-
 }
