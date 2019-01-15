@@ -5,7 +5,9 @@ object Main extends App{
 // val numers = new Collection
 // numers.exFlatMap()
 
- val test = new useFunc
- println(test.messsage)
- println(test.louder)
-}
+// val test = new useFunc
+// println(test.messsage)
+// println(test.louder)
+
+   val important = new ImportantScala
+   important.exLazyEvaluation()
