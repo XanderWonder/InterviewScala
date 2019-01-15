@@ -1,5 +1,7 @@
 class ImportantScala {
-  def ExHigherOrder(){}
+  def ExHigherOrder(): Unit ={
+
+  }
   def ExCurrying(){}
   def ExPartialApplied(){}
   def ExClosure(){}
